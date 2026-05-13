@@ -1,0 +1,23 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Temp
+temp/
+tmp/
+*.tmp
+
+# Personal notes (users testing the template)
+my-kit/
+test-kit/
+personal-notes.md
