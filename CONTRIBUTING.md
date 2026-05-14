@@ -109,26 +109,6 @@ docs: adiciona tradução README em português
 
 ---
 
-## 🎯 Áreas Prioritárias (Ajuda Necessária!)
-
-Precisamos especialmente de ajuda com:
-
-1. **🌍 Traduções**
-   - README em espanhol, francês, alemão, japonês, chinês, etc.
-   - Instruções do template em outros idiomas
-
-2. **�️ Melhorias no Template**
-   - Melhor geração de questões diagnósticas
-   - Scaffolding de labs aprimorado
-   - Mais recursos interativos no simulador HTML
-
-3. **📖 Documentação**
-   - Tutoriais em vídeo (como usar o template)
-   - Guias passo-a-passo para vendors específicos
-   - Expansões de FAQ
-
----
-
 ## 🧪 Testando Suas Mudanças
 
 Antes de enviar um PR que modifica `TEMPLATE.md`:
@@ -151,15 +131,6 @@ Antes de enviar um PR que modifica `TEMPLATE.md`:
 - **Perguntas gerais:** Abra uma [Discussion](https://github.com/YOUR-USERNAME/certification-kit-generator/discussions)
 - **Bugs/funcionalidades:** Abra uma [Issue](https://github.com/YOUR-USERNAME/certification-kit-generator/issues)
 - **Esclarecimentos rápidos:** Comente em issues/PRs existentes
-
----
-
-## 🌟 Reconhecimento
-
-Contribuidores serão:
-- Listados na seção **Contributors** (automático via GitHub)
-- Mencionados nas notas de lançamento para contribuições significativas
-- Creditados no README para funcionalidades importantes
 
 ---
 
