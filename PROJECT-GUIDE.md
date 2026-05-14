@@ -223,49 +223,6 @@ Monitore essas para entender a saúde do projeto:
 
 ---
 
-## 📞 Contato e Propriedade
-
-**Mantenedor do Projeto:** [Seu Nome/Username]  
-**Email:** [Seu Email]  
-**GitHub:** [@YOUR-USERNAME](https://github.com/YOUR-USERNAME)
-
-**Tomada de decisão:**
-- **Mudanças menores** (erros de digitação, ajustes de texto): Fazer merge livremente
-- **Mudanças médias** (novos recursos): Obter 1-2 revisões
-- **Mudanças importantes** (template disruptivo): Discutir em issue primeiro
-
-**Autoridade de lançamento:** Apenas mantenedor (por enquanto)
-
----
-
-## 🌟 Reconhecimento
-
-Contribuidores são reconhecidos em:
-- Página de Contributors do GitHub (automático)
-- Notas de lançamento (para contribuições significativas)
-- "Histórias de Sucesso" do README (para kits compartilhados)
-
----
-
-## 🔮 Visão Futura
-
-### Curto prazo (Q3 2026)
-- Extensão VSCode (geração com um clique)
-- Tutoriais em vídeo
-- Suporte ampliado a vendors principais
-
-### Médio prazo (Q4 2026)
-- Gerador baseado em web (sem instalação local)
-- Banco de questões da comunidade (verificado, apenas fontes oficiais)
-- Dashboard de rastreamento de progresso
-
-### Longo prazo (2027+)
-- Algoritmo de repetição espaçada
-- App mobile
-- Integração com plataformas oficiais de vendors
-
----
-
 ## 📜 Filosofia
 
 Este projeto existe para:
