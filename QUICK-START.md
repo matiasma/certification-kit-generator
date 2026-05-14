@@ -284,7 +284,7 @@ Você agora tem:
 
 **Tempo investido:** 10 minutos  
 **Valor recebido:** 40+ horas de material de estudo organizado  
-**Custo:** R$ 0
+**Custo:** Apenas o consumo de tokens
 
 **Boa sorte com sua certificação!** 🚀🎓
 
