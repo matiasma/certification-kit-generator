@@ -7,6 +7,74 @@ e este projeto segue [Versionamento Semântico](https://semver.org/spec/v2.0.0.h
 
 ---
 
+## [3.2.1] - 2026-05-15
+
+### Corrigido
+- **🐛 Bug crítico no `simulado.html`** — a primeira alternativa (índice `0`) de cada questão **nunca parecia selecionada** no UI ao ser clicada. Causa: padrão `var sel = state.answers[qi] || default` — em JavaScript, `0 || x === x` porque `0` é falsy. O estado era gravado e contabilizado corretamente, mas o destaque visual sumia. Aplicado fix no kit `AZ305/simulado.html` substituindo o `||` por checagem explícita contra `null`/`undefined`.
+
+### Adicionado
+- **🆕 Seção "Armadilhas JS obrigatórias de evitar"** no `TEMPLATE.md` (bloco do `simulado.html`) com 5 regras defensivas: (1) índice 0 falsy, (2) contagem de respondidas, (3) multi-select defensivo, (4) `onchange` em radios re-renderizados, (5) smoke test mental obrigatório antes de entregar.
+- **🆕 Item de checklist** em `## Critérios de qualidade` e em `## ✅ Checklist de Entregáveis` referenciando explicitamente o bug "índice 0 falsy" para evitar reincidência.
+
+---
+
+## [3.2.0] - 2026-05-15
+
+### 🆕 Toggle de tema claro/escuro em todos os arquivos HTML gerados
+
+Kits no modo `html` agora incluem um botão de alternar entre tema escuro (padrão) e claro em **cada** arquivo gerado. A preferência do usuário persiste entre páginas via `localStorage`.
+
+### Adicionado
+- **🆕 Botão `#theme-toggle`** obrigatório no cabeçalho fixo de cada arquivo `.html` do kit (ícone `🌙` em dark, `☀️` em light, com `aria-label` acessível).
+- **🆕 Paleta de tema claro** definida em `:root[data-theme="light"]` em todos os arquivos, espelhando as mesmas CSS variables do tema dark.
+- **🆕 Persistência entre páginas** via `localStorage` com chave fixa **`ckg-theme`** — a escolha do usuário segue ao navegar entre `README.html`, `domains/*.html`, `labs/**`, etc.
+- **🆕 Script anti-FOUC inline no `<head>`** que aplica `data-theme` em `<html>` antes do paint, evitando o flash de tema errado em recarregamentos.
+- **🆕 Mermaid dinâmico**: o tema do Mermaid (`dark` ou `default`) é escolhido com base no `data-theme` ativo no carregamento da página (limitação documentada: trocar tema requer reload para re-renderizar diagramas).
+- **🆕 4 novos itens no checklist HTML** do template: toggle presente em todos os arquivos, paleta light definida, persistência via `localStorage.ckg-theme`, sem FOUC.
+
+### Alterado
+- **Passo 2 do workflow** (`TEMPLATE.md`) agora exige que o agente defina antecipadamente **ambas as paletas** (dark + light), o snippet do botão `#theme-toggle`, e o script anti-FOUC — reutilizados idênticos em todos os arquivos.
+- **Tabela comparativa HTML vs Markdown** (no `TEMPLATE.md`, `README.md` e `QUICK-START.md`) atualizada para destacar o toggle de tema como vantagem do modo HTML.
+- **Protocolo de testes** (`PROJECT-GUIDE.md`) inclui validação do toggle em múltiplos arquivos e da persistência entre páginas.
+
+### Preservado
+- **Dark continua padrão** se não houver preferência salva (não usamos `prefers-color-scheme` para manter comportamento previsível).
+- Modo `markdown` inalterado.
+- Todas as regras de fontes oficiais e validação MCP.
+
+---
+
+## [3.1.0] - 2026-05-15
+
+### 🆕 Suporte a HTML como formato de saída padrão
+
+Os kits agora podem ser gerados como `.html` single-file (padrão) ou `.md` clássico, escolha via nova variável.
+
+### Adicionado
+- **🆕 Variável `<<OUTPUT_FORMAT>>`** (opcional, padrão `html`) — define a extensão de todos os arquivos textuais do kit. Valores aceitos: `html` (padrão) ou `markdown`.
+- **🆕 Modo HTML**: todos os arquivos textuais viram `.html` single-file (sem build, sem dependências locais), com:
+  - Tema dark consistente entre todos os arquivos (mesma paleta do `simulado.html`)
+  - TOC interno, navegação clicável entre arquivos (`README.html` é o hub)
+  - Mermaid renderizado nativamente via CDN (sem precisar de plugin)
+  - Tabelas estilizadas, blocos de código com formatação
+  - Links externos abrem em nova aba (`target="_blank"`)
+  - Abrem com duplo-clique no navegador, sem servidor
+- **🆕 Tabela comparativa HTML vs Markdown** no `TEMPLATE.md`, `README.md` e `QUICK-START.md` explicando o caso de uso de cada formato.
+- **🆕 Critérios de qualidade específicos para HTML** no checklist do template (consistência visual, navegação, renderização Mermaid).
+- **🆕 Passo 2 do workflow** instrui o agente a anunciar o `<<OUTPUT_FORMAT>>` resolvido ao usuário e definir paleta CSS reutilizável antes de gerar arquivos.
+
+### Alterado
+- **Especificação de entregáveis**: todas as extensões `.md` viraram `.<EXT>` no `TEMPLATE.md` (resolvido para `html` ou `md` conforme `<<OUTPUT_FORMAT>>`). `simulado.html` e `flashcards.csv` mantêm extensão fixa em ambos os modos.
+- **Documentação atualizada** (`README.md`, `QUICK-START.md`, `PROJECT-GUIDE.md`) para refletir o formato configurável e o padrão HTML.
+- **Protocolo de testes**: agora cobre validação em ambos os modos (HTML e Markdown).
+
+### Preservado
+- Comportamento markdown clássico (v3.0) disponível via `<<OUTPUT_FORMAT>>=markdown`.
+- Todas as regras de fontes oficiais e validação MCP da v3.0.
+- Compatibilidade total com Anki (`flashcards.csv` sempre CSV) e ferramentas executáveis dos labs (arquivos `.py`, `.js`, `Dockerfile`, etc. mantêm extensão própria).
+
+---
+
 ## [3.0.0] - 2026-05-13
 
 ### 🎉 Lançamento Público Inicial (v3)
@@ -83,7 +151,7 @@ Reescrita completa do template gerador de kits de estudo para certificação, ot
 
 ## Roadmap
 
-### [3.1.0] - Planejado (Q3 2026)
+### [3.3.0] - Planejado (Q3 2026)
 
 **Recursos em consideração:**
 - [ ] **Diagnóstico adaptativo** - Dificuldade das questões se ajusta com base nas respostas
@@ -111,6 +179,8 @@ Reescrita completa do template gerador de kits de estudo para certificação, ot
 
 | Versão | Data de Lançamento | Destaques |
 |---------|--------------|----------|
+| **v3.2.0** | 2026-05-15 | 🆕 Toggle de tema claro/escuro persistente em todos os HTML |
+| **v3.1.0** | 2026-05-15 | 🆕 Suporte a HTML como formato de saída padrão |
 | **v3.0.0** | 2026-05-13 | 🎉 Lançamento público, otimizado para iniciantes |
 | v2.0.0 | 2026-03-XX | Interno, foco intermediário |
 | v1.0.0 | 2025-XX-XX | Interno, MVP |

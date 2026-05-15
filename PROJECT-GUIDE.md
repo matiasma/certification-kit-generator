@@ -141,21 +141,25 @@ certification-kit-generator/
 Antes de lançar uma nova versão:
 
 ### 1. Testes Funcionais
-- [ ] Gerar kit para cert Azure (AZ-204)
-- [ ] Gerar kit para cert AWS (SAA-C03)
+- [ ] Gerar kit para cert Azure (AZ-204) em **modo HTML padrão**
+- [ ] Gerar kit para cert AWS (SAA-C03) em **modo Markdown** (`<<OUTPUT_FORMAT>>=markdown`)
 - [ ] Gerar kit para Kubernetes (CKA)
 - [ ] Gerar kit em idioma não-inglês (pt-BR)
-- [ ] Verificar se todos os 30-35 arquivos foram criados
+- [ ] Verificar se todos os 30-35 arquivos foram criados na extensão correta (`.html` ou `.md`)
 - [ ] Abrir `simulado.html` no navegador (funciona?)
+- [ ] No modo HTML: abrir `README.html` e validar navegação clicável entre arquivos
+- [ ] No modo HTML: validar que `concept-map.html` renderiza Mermaid via CDN
+- [ ] 🆕 No modo HTML: clicar no botão de toggle de tema em pelo menos 3 arquivos diferentes e validar que (a) o tema alterna entre dark e light, (b) a escolha persiste ao navegar para outras páginas, (c) não há FOUC ao carregar páginas com tema light salvo
 - [ ] Importar `flashcards.csv` para Anki (importa corretamente?)
 - [ ] Executar pelo menos 1 lab (código executa?)
 
 ### 2. Testes de Qualidade
 - [ ] Verificar se todos os links apontam para fontes oficiais
-- [ ] Verificar se diagramas Mermaid renderizam
-- [ ] Verificar formatação markdown
+- [ ] Verificar se diagramas Mermaid renderizam (em md via GitHub/VS Code; em html via CDN)
+- [ ] Verificar formatação (markdown puro ou HTML com tema dark/claro consistente e toggle funcional)
 - [ ] Testar com diferentes níveis de experiência
 - [ ] Testar com diferentes restrições de tempo
+- [ ] Testar com `<<OUTPUT_FORMAT>>=html` e `<<OUTPUT_FORMAT>>=markdown`
 
 ### 3. Testes de Documentação
 - [ ] Seguir QUICK-START.md passo-a-passo
@@ -245,5 +249,5 @@ Abra uma discussion: [GitHub Discussions](https://github.com/YOUR-USERNAME/certi
 
 ---
 
-**Última atualização:** 2026-05-13  
+**Última atualização:** 2026-05-15  
 **Mantenedor:** [Seu Nome]

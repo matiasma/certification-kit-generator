@@ -61,7 +61,19 @@ Abra `TEMPLATE.md` e localize a seção **Variáveis** no topo.
 <<STRONG_AREAS>>  = redes, C#        # padrão: "desconhecido" (diagnóstico calibra)
 <<WEAK_AREAS>>    = segurança        # padrão: "desconhecido" (diagnóstico calibra)
 <<NOTE_TOOL>>     = Notion           # padrão: "nenhum"
+<<OUTPUT_FORMAT>> = html             # padrão: "html" (alternativa: "markdown")
 ```
+
+> 🆕 **Sobre `<<OUTPUT_FORMAT>>`** — escolha como você quer ler o kit:
+>
+> | Formato | Quando usar | Custo de tokens (output) |
+> |---|---|---|
+> | **`html`** (padrão) | Estudar no navegador, imprimir/PDF, toggle de tema claro/escuro com persistência, Mermaid renderizado, navegação clicável | **Alto** (~80-120K tokens para kit completo; pode forçar compactação de contexto durante a geração) |
+> | **`markdown`** | Versionar no Git, importar em Obsidian/Notion/Logseq, editar com agentes de IA, diffs limpos | **Baixo** (~25-40K tokens; raramente compacta) |
+>
+> `simulado.html` e `flashcards.csv` mantêm sempre suas extensões. Códigos de labs (`.py`, `.js`, etc.) também.
+>
+> ⚙️ **Dica de orçamento:** se sua cobrança é por token de output ou seu modelo tem janela curta, gere em `markdown` e converta depois (ex.: `pandoc cheatsheet.md -o cheatsheet.html`). Você não perde nada do conteúdo — só o scaffold visual (CSS + botão de tema).
 
 #### 🤖 Auto-derivadas (o agente descobre — **você NÃO precisa saber**)
 
@@ -129,41 +141,43 @@ Se ainda assim quiser tentar:
 
 ## ✅ Verifique Seu Kit
 
-Após a conclusão da geração, sua pasta deve parecer assim:
+Após a conclusão da geração, sua pasta deve parecer assim (**modo `html` — padrão**):
 
 ```
 meu-kit-az-204/
-├── README.md              ✅
-├── diagnostic.md          ✅
-├── fundamentals.md        ✅
-├── glossary.md            ✅
-├── concept-map.md         ✅
-├── study-plan.md          ✅
-├── cheatsheet.md          ✅
-├── pegadinhas.md          ✅
-├── exam-strategy.md       ✅
-├── mock-exam-plan.md      ✅
-├── simulado.html          ✅ (Abra isso no navegador!)
-├── flashcards.md          ✅
-├── flashcards.csv         ✅
-├── mistake-log.md         ✅
+├── README.html            ✅ (hub navegável — abra no navegador)
+├── diagnostic.html        ✅
+├── fundamentals.html      ✅
+├── glossary.html          ✅
+├── concept-map.html       ✅ (Mermaid via CDN)
+├── study-plan.html        ✅
+├── cheatsheet.html        ✅
+├── pegadinhas.html        ✅
+├── exam-strategy.html     ✅
+├── mock-exam-plan.html    ✅
+├── simulado.html          ✅ (sempre .html — abra no navegador!)
+├── flashcards.html        ✅
+├── flashcards.csv         ✅ (sempre .csv — para Anki)
+├── mistake-log.html       ✅
 ├── domains/
-│   ├── 01-*.md            ✅
-│   ├── 02-*.md            ✅
+│   ├── 01-*.html          ✅
+│   ├── 02-*.html          ✅
 │   ├── ...
 └── labs/
     ├── 01-*/              ✅
-    │   ├── README-guided.md
-    │   ├── README-speedrun.md
-    │   └── <arquivos de código>
+    │   ├── README-guided.html
+    │   ├── README-speedrun.html
+    │   └── <arquivos de código>   (sempre .py/.js/.sh/etc.)
     └── ...
 ```
+
+> No modo `markdown`, troque `.html` por `.md` em todos os arquivos textuais (exceto `simulado.html` e `flashcards.csv`, que mantêm sempre suas extensões).
 
 **Esperado:**
 - **~35 arquivos** no total
 - **50.000-70.000 palavras** de conteúdo
 - **3-5 labs** com código executável
-- **50 flashcards** em markdown + CSV
+- **50 flashcards** em html/markdown + CSV
 - **Quiz HTML interativo** (duplo-clique para abrir)
 
 ---
@@ -171,19 +185,19 @@ meu-kit-az-204/
 ## 🎯 O Que Fazer a Seguir
 
 ### Dia 0 (30 minutos)
-1. **Leia `README.md`** — Entenda a estrutura
-2. **Faça `diagnostic.md`** — Calibre seu nível
-3. **Verifique os resultados** — Veja se você precisa de `fundamentals.md`
+1. **Abra `README.html`** (ou `README.md`) — Entenda a estrutura
+2. **Faça `diagnostic.html`** (ou `.md`) — Calibre seu nível
+3. **Verifique os resultados** — Veja se você precisa de `fundamentals.html`/`.md`
 
-### Dia 1+ (Siga `study-plan.md`)
+### Dia 1+ (Siga `study-plan`)
 - Cada dia tem leitura atribuída, labs e flashcards
-- Acompanhe progresso em `mistake-log.md`
-- Revise `pegadinhas.md` regularmente
+- Acompanhe progresso em `mistake-log`
+- Revise `pegadinhas` regularmente
 
 ### Última Semana
 - Complete `simulado.html` (simulação completa do exame)
-- Revise `exam-strategy.md` (técnica dos 3 passes)
-- Revisão de última hora com `cheatsheet.md`
+- Revise `exam-strategy` (técnica dos 3 passes)
+- Revisão de última hora com `cheatsheet`
 
 ---
 
@@ -227,16 +241,18 @@ meu-kit-az-204/
 - Se o agente parar no meio, peça para **continuar** em vez de regerar tudo
 
 ### 🎨 Customize Após a Geração
-- Todos os arquivos são markdown — edite livremente!
+- Todos os arquivos são texto puro (`.html` ou `.md`) — edite livremente!
 - Adicione notas pessoais
 - Faça fork e customize para sua equipe
+- Trocou de ideia sobre o formato? Regenere com `<<OUTPUT_FORMAT>>` diferente
 
 ### 🔄 Regenere se Necessário
 - Não ficou satisfeito com os resultados? **Ajuste variáveis e regenere**
 - Exemplo: Aumente `<<HOURS_PER_DAY>>` para conteúdo mais detalhado
+- Exemplo: Troque `<<OUTPUT_FORMAT>>=html` para `markdown` para versionar no Git
 
 ### 📦 Compartilhe Seu Kit
-- Publique no GitHub (é tudo markdown + HTML)
+- Publique no GitHub (HTML ou markdown, tudo texto puro)
 - Adicione um disclaimer de que é educacional
 - Faça link para este template para que outros possam gerar o próprio
 
@@ -252,14 +268,15 @@ meu-kit-az-204/
 Use isso para verificar se você está pronto para começar a estudar:
 
 - [ ] Kit gerado com sucesso (30-35 arquivos)
-- [ ] `README.md` explica a estrutura
-- [ ] `diagnostic.md` concluído (pontuado por domínio)
-- [ ] `fundamentals.md` revisado (se necessário)
-- [ ] `study-plan.md` faz sentido para minha agenda
+- [ ] Formato gerado corresponde ao `<<OUTPUT_FORMAT>>` escolhido (`.html` por padrão, `.md` se optou por markdown)
+- [ ] `README` explica a estrutura
+- [ ] `diagnostic` concluído (pontuado por domínio)
+- [ ] `fundamentals` revisado (se necessário)
+- [ ] `study-plan` faz sentido para minha agenda
 - [ ] `simulado.html` abre e funciona no navegador
 - [ ] Pelo menos 1 lab roda com sucesso
 - [ ] Flashcards importados para Anki (opcional)
-- [ ] `mistake-log.md` pronto para uso
+- [ ] `mistake-log` pronto para uso
 
 ---
 
@@ -275,10 +292,11 @@ Use isso para verificar se você está pronto para começar a estudar:
 Você agora tem:
 - ✅ Materiais de estudo completos (30-35 arquivos)
 - ✅ Personalizados para SEU nível e cronograma
+- ✅ No formato que você escolheu (HTML padrão para navegador, ou Markdown para Git/Obsidian)
 - ✅ 100% baseado em docs oficiais do vendor
 - ✅ Gratuito e open-source
 
-**Próximo:** Abra `README.md` no seu kit gerado e comece o Dia 0!
+**Próximo:** Abra `README.html` (ou `README.md`) no seu kit gerado e comece o Dia 0!
 
 ---
 

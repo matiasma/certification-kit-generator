@@ -67,6 +67,7 @@ Este é um **template de prompt reutilizável** projetado para o **GitHub Copilo
 - 📝 **Template de rastreamento de erros** + checklist de progresso
 - 📖 **Glossário** (40-80 termos) + **Mapas conceituais** (diagramas Mermaid)
 - 🗓️ **Plano de estudos personalizado** adaptado ao SEU tempo, nível e fraquezas
+- 🆕 📄 **Formato de saída à escolha**: **HTML (padrão)** — tema dark/claro com toggle persistente, navegaçável, abre no navegador — ou **Markdown** — versionavel no Git e importável em Obsidian/Notion
 
 Todo o conteúdo é **100% baseado em documentação oficial dos vendors** (Microsoft Learn, GitHub Docs, AWS Docs, etc.) — **zero cursos de terceiros, dumps ou recursos pagos**.
 
@@ -78,8 +79,9 @@ Todo o conteúdo é **100% baseado em documentação oficial dos vendors** (Micr
 - **Economize 20-40 horas** de curadoria e organização de conteúdo
 - **Otimizado para iniciantes** (v3) com calibração diagnóstica
 - **Open-source** e **gratuito para sempre** (Licença MIT)
-- **Funciona offline** (simulador HTML, arquivos markdown)
+- **Funciona offline** (simulador HTML, arquivos `.html`/`.md` locais — escolha seu formato)
 - **Multi-idioma** (gere em qualquer idioma: português, inglês, espanhol, etc.)
+- 🆕 **HTML ou Markdown** (padrão HTML para leitura no navegador; markdown para Git/Obsidian)
 
 ### ✅ Para Criadores/Educadores
 - **Reprodutível** — mesmo prompt gera qualidade consistente
@@ -93,55 +95,63 @@ Todo o conteúdo é **100% baseado em documentação oficial dos vendors** (Micr
 
 Quando você executa este template, obtém **30-35 arquivos** incluindo:
 
+> 🆕 **Formato de saída configurável** (`<<OUTPUT_FORMAT>>`): por padrão (**`html`**), os arquivos textuais são gerados como `.html` single-file com **toggle de tema claro/escuro** (escolha persiste entre páginas), navegação clicável e Mermaid renderizado via CDN — ideais para estudar no navegador. Se preferir, use `markdown` e receba `.md` clássico — ideal para Git, Obsidian e Notion. `simulado.html` e `flashcards.csv` mantêm suas extensões em ambos os modos.
+>
+> ⚙️ **Custo de tokens (LLM):** o modo `html` consome **~3x mais tokens de output** que `markdown` (cada arquivo carrega CSS + JS de toggle de tema). Um kit completo em `html` gira em torno de 80-120K tokens de output e tipicamente força ≥1 compactação de contexto durante a geração; em `markdown`, fica em 25-40K tokens e raramente compacta. Se cobrança por token ou janela de contexto forem restrição, use `markdown` e converta depois (ex.: `pandoc x.md -o x.html`).
+
 ### 📋 Materiais de Estudo Principais (13 arquivos)
-- `README.md` - Hub com setup, roadmap e checklist
-- `diagnostic.md` - 20-25 questões de calibração (Dia 0 obrigatório)
-- `fundamentals.md` - Primer de pré-requisitos (para iniciantes)
-- `glossary.md` - Termos técnicos A-Z
-- `concept-map.md` - Diagramas de relacionamento Mermaid
-- `study-plan.md` - Cronograma dia-a-dia personalizado
-- `cheatsheet.md` - Tabelas de referência rápida
-- `pegadinhas.md` - TOP 20 armadilhas do exame + heurísticas de decisão
-- `exam-strategy.md` - Estratégia de 3 passes + gestão de tempo
-- `mock-exam-plan.md` - Cronograma de simulados
-- `simulado.html` - **Quiz interativo em arquivo único** (sem build!)
-- `flashcards.md` + `flashcards.csv` - TOP 50 Q&A para repetição espaçada
-- `mistake-log.md` - Template de rastreamento de erros
+- `README` - Hub com setup, roadmap e checklist
+- `diagnostic` - 20-25 questões de calibração (Dia 0 obrigatório)
+- `fundamentals` - Primer de pré-requisitos (para iniciantes)
+- `glossary` - Termos técnicos A-Z
+- `concept-map` - Diagramas de relacionamento Mermaid
+- `study-plan` - Cronograma dia-a-dia personalizado
+- `cheatsheet` - Tabelas de referência rápida
+- `pegadinhas` - TOP 20 armadilhas do exame + heurísticas de decisão
+- `exam-strategy` - Estratégia de 3 passes + gestão de tempo
+- `mock-exam-plan` - Cronograma de simulados
+- **`simulado.html`** - **Quiz interativo em arquivo único** (sempre HTML, sem build!)
+- `flashcards` + **`flashcards.csv`** - TOP 50 Q&A para repetição espaçada (CSV sempre)
+- `mistake-log` - Template de rastreamento de erros
+
+> Extensão = `.html` (padrão) ou `.md` conforme você escolher.
 
 ### 📚 Guias por Domínio (5+ arquivos)
-- `domains/01-topico.md` → `domains/05-topico.md`
+- `domains/01-topico` → `domains/05-topico`
 - Cada um cobre 1 domínio do exame com exemplos, comandos, comparações
 
 ### 🧪 Labs Práticos (3-5 labs, cada um com 4+ arquivos)
-- `labs/01-nome/README-guided.md` - Modo didático (30-60min)
-- `labs/01-nome/README-speedrun.md` - Modo retenção (10-20min)
-- `labs/01-nome/<arquivos-codigo>` - Scripts executáveis Python/JS/Shell
+- `labs/01-nome/README-guided` - Modo didático (30-60min)
+- `labs/01-nome/README-speedrun` - Modo retenção (10-20min)
+- `labs/01-nome/<arquivos-codigo>` - Scripts executáveis Python/JS/Shell (extensão própria)
 - `labs/01-nome/requirements.txt` - Dependências
 
-**Estrutura de exemplo:**
+**Estrutura de exemplo (modo HTML padrão):**
 ```
 az-204/
-├── README.md
-├── diagnostic.md
-├── fundamentals.md
-├── glossary.md
-├── concept-map.md
-├── study-plan.md
-├── cheatsheet.md
-├── simulado.html ⭐
-├── flashcards.md + .csv
+├── README.html ⭐ (hub navegável)
+├── diagnostic.html
+├── fundamentals.html
+├── glossary.html
+├── concept-map.html (Mermaid via CDN)
+├── study-plan.html
+├── cheatsheet.html
+├── simulado.html ⭐ (sempre .html)
+├── flashcards.html + flashcards.csv (CSV sempre)
 ├── domains/
-│   ├── 01-compute.md
-│   ├── 02-storage.md
+│   ├── 01-compute.html
+│   ├── 02-storage.html
 │   └── ...
 └── labs/
     ├── 01-container-app/
-    │   ├── README-guided.md
-    │   ├── README-speedrun.md
-    │   ├── app.py
-    │   └── Dockerfile
+    │   ├── README-guided.html
+    │   ├── README-speedrun.html
+    │   ├── app.py            (sempre .py)
+    │   └── Dockerfile        (sempre Dockerfile)
     └── ...
 ```
+
+> No modo `markdown`, troque `.html` por `.md` em todos os arquivos textuais acima.
 
 ---
 
@@ -173,7 +183,13 @@ Você só precisa de **5 variáveis obrigatórias** — o agente descobre o rest
 <<STRONG_AREAS>>   = redes, infra  # padrão: "desconhecido" (diagnóstico calibra)
 <<WEAK_AREAS>>     = segurança     # padrão: "desconhecido" (diagnóstico calibra)
 <<NOTE_TOOL>>      = Notion        # padrão: "nenhum"
+<<OUTPUT_FORMAT>>  = html          # padrão: "html" (alternativa: "markdown")
 ```
+
+> 🆕 **`<<OUTPUT_FORMAT>>`** define a extensão de todos os arquivos textuais do kit:
+> - **`html`** (padrão) → `.html` single-file com tema dark, navegação clicável, Mermaid via CDN. Abra com duplo-clique. Use quando estudar lendo no navegador, imprimir, ou compartilhar com não-devs.
+> - **`markdown`** → `.md` clássico. Use para versionar no Git, importar em Obsidian/Notion/Logseq, ou editar com agentes de IA. Diffs limpos e leve.
+> - **Exceções (não mudam de extensão):** `simulado.html` (sempre HTML), `flashcards.csv` (sempre CSV), arquivos de código dos labs (`.py`, `.js`, etc.).
 
 #### 🤖 Auto-derivadas (o agente descobre — **iniciante NÃO precisa saber**)
 
@@ -341,6 +357,20 @@ Faça fork do template e adicione suas próprias seções:
 - Todo o conteúdo gerado estará nesse idioma
 - Termos técnicos permanecem em inglês (como aparecem nos exames)
 
+### 🆕 Para Escolher o Formato (HTML vs Markdown)
+
+- **HTML (padrão, `<<OUTPUT_FORMAT>>=html`)** — recomendado para a maioria:
+  - Tema dark consistente, navegação entre arquivos, TOC interno
+  - Mermaid renderiza nativo via CDN (sem plugin)
+  - Abre com duplo-clique em qualquer navegador, sem servidor
+  - Busca rápida no navegador (`Ctrl+F`)
+  - Imprime/exporta PDF de forma elegante
+- **Markdown (`<<OUTPUT_FORMAT>>=markdown`)** — para quem versiona ou usa apps de notas:
+  - Diffs limpos no Git
+  - Importável diretamente em Obsidian, Notion, Logseq, Joplin
+  - Editável em qualquer editor, manipulável por scripts/agentes
+  - Renderização nativa no GitHub e VS Code
+
 ---
 
 ## 🤝 Contribuindo
@@ -357,11 +387,12 @@ Veja [CONTRIBUTING.md](CONTRIBUTING.md) para diretrizes detalhadas.
 
 ## 📊 Estatísticas
 
-- **Versão do Template:** v3 (Maio 2026)
+- **Versão do Template:** v3.1 (Maio 2026 — adiciona suporte a HTML como formato de saída)
 - **Arquivos Gerados:** 30-35 por kit
 - **Conteúdo Médio:** 50.000-70.000 palavras
 - **Tempo de Geração:** 5-15 minutos
 - **Custo:** Gratuito (apenas uso do agente de IA)
+- **Formatos de Saída:** **HTML (padrão)** ou Markdown
 - **Licença:** MIT (use em qualquer lugar, modifique livremente)
 
 ---
@@ -382,9 +413,10 @@ Você pode:
 
 1. Baixe o [`TEMPLATE.md`](TEMPLATE.md)
 2. Preencha apenas **5 variáveis obrigatórias** (código do exame, dias, horas/dia, nível, idioma) — o agente descobre o resto
-3. Cole no GitHub Copilot (workspace vazio)
-4. Obtenha **30-35 arquivos** de materiais de estudo personalizados em 10 minutos
-5. Estude, passe no exame, sucesso! 🎉
+3. (Opcional) Escolha o formato: **HTML** (padrão, abre no navegador) ou **Markdown** (Git/Obsidian) via `<<OUTPUT_FORMAT>>`
+4. Cole no GitHub Copilot (workspace vazio)
+5. Obtenha **30-35 arquivos** de materiais de estudo personalizados em 10 minutos
+6. Estude, passe no exame, sucesso! 🎉
 
 **Sem cursos pagos, sem dumps, sem enrolação.** Apenas você, docs oficiais e um template inteligente.
 
