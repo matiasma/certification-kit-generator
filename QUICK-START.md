@@ -25,8 +25,9 @@
 ### Passo 1: Baixe o Template
 
 **Opção A:** Clone este repositório
+
 ```bash
-git clone https://github.com/YOUR-USERNAME/certification-kit-generator.git
+git clone https://github.com/matiasma/certification-kit-generator.git
 cd certification-kit-generator
 ```
 
@@ -282,8 +283,8 @@ Use isso para verificar se você está pronto para começar a estudar:
 
 ## 🆘 Precisa de Ajuda?
 
-- **Problemas com template:** [Abra uma issue](https://github.com/YOUR-USERNAME/certification-kit-generator/issues)
-- **Dúvidas de uso:** [GitHub Discussions](https://github.com/YOUR-USERNAME/certification-kit-generator/discussions)
+- **Problemas com template:** [Abra uma issue](../../issues)
+- **Dúvidas de uso:** [GitHub Discussions](../../discussions)
 
 ---
 

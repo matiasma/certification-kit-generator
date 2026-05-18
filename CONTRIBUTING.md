@@ -128,8 +128,8 @@ Antes de enviar um PR que modifica `TEMPLATE.md`:
 
 ## 📞 Dúvidas?
 
-- **Perguntas gerais:** Abra uma [Discussion](https://github.com/YOUR-USERNAME/certification-kit-generator/discussions)
-- **Bugs/funcionalidades:** Abra uma [Issue](https://github.com/YOUR-USERNAME/certification-kit-generator/issues)
+- **Perguntas gerais:** Abra uma [Discussion](../../discussions)
+- **Bugs/funcionalidades:** Abra uma [Issue](../../issues)
 - **Esclarecimentos rápidos:** Comente em issues/PRs existentes
 
 ---

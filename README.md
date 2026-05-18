@@ -159,7 +159,7 @@ az-204/
 
 ### 1️⃣ **Abra o Template**
 - Baixe o [`TEMPLATE.md`](TEMPLATE.md) deste repositório
-- Ou copie o prompt diretamente do [arquivo raw](https://raw.githubusercontent.com/YOUR-USERNAME/certification-kit-generator/main/TEMPLATE.md)
+- Ou copie o prompt diretamente do [arquivo raw](TEMPLATE.md?raw=1)
 
 ### 2️⃣ **Preencha Suas Variáveis**
 
@@ -377,7 +377,7 @@ Faça fork do template e adicione suas próprias seções:
 
 Aceitamos contribuições! Veja como:
 
-1. **Reporte problemas** — Encontrou um bug ou instrução confusa? [Abra uma issue](https://github.com/YOUR-USERNAME/certification-kit-generator/issues)
+1. **Reporte problemas** — Encontrou um bug ou instrução confusa? [Abra uma issue](../../issues)
 2. **Melhore o template** — Prompts melhores, novos recursos? Envie um PR
 3. **Traduza** — Quer o README em outro idioma? PRs são bem-vindos!
 

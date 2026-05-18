@@ -227,9 +227,9 @@ Ao enviar PRs que mudam funcionalidade:
 
 ## Dúvidas?
 
-- **Sobre lançamentos:** Confira [GitHub Releases](https://github.com/YOUR-USERNAME/certification-kit-generator/releases)
-- **Sobre roadmap:** Participe das [Discussions](https://github.com/YOUR-USERNAME/certification-kit-generator/discussions)
-- **Reportar bugs:** [Abra uma issue](https://github.com/YOUR-USERNAME/certification-kit-generator/issues)
+- **Sobre lançamentos:** Confira [GitHub Releases](../../releases)
+- **Sobre roadmap:** Participe das [Discussions](../../discussions)
+- **Reportar bugs:** [Abra uma issue](../../issues)
 
 ---
 

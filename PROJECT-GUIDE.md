@@ -245,7 +245,7 @@ Este projeto existe para:
 
 **Dúvidas sobre este guia?**
 
-Abra uma discussion: [GitHub Discussions](https://github.com/YOUR-USERNAME/certification-kit-generator/discussions)
+Abra uma discussion: [GitHub Discussions](../../discussions)
 
 ---
 
