@@ -159,7 +159,7 @@ az-204/
 
 ### 1️⃣ **Abra o Template**
 - Baixe o [`TEMPLATE.md`](TEMPLATE.md) deste repositório
-- Ou copie o prompt diretamente do [arquivo raw](TEMPLATE.md?raw=1)
+- Ou copie o prompt diretamente do [arquivo raw](../../raw/main/TEMPLATE.md)
 
 ### 2️⃣ **Preencha Suas Variáveis**
 
