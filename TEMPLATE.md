@@ -188,6 +188,7 @@ Crie sob `<<EXAM_CODE>>/` (minúsculas), no idioma `<<PREFERRED_LANGUAGE>>`. Ext
 - 5 questões de pré-requisitos (Git, YAML, HTTP, conceitos básicos do vendor)
 - ~3-5 questões por domínio do blueprint (cobertura ampla, não profunda)
 - Cada questão: enunciado + 4 alternativas + resposta correta + link oficial
+- **Gabarito balanceado A/B/C/D:** cada letra 20–30% das corretas, máx 35%. Auditar e re-permutar antes de entregar.
 - Tabela de auto-correção: `score 0-40% → modo aprofundado | 41-70% → cobertura padrão | 71-100% → comprimir`
 - Output esperado: `score_per_domain.txt` que o `study-plan.<EXT>` consome
 - **Executar antes de qualquer outro estudo (Dia 0, ~30min)**
@@ -235,6 +236,7 @@ Crie sob `<<EXAM_CODE>>/` (minúsculas), no idioma `<<PREFERRED_LANGUAGE>>`. Ext
 **`simulado.html`** — **Sempre `.html`, independente de `<<OUTPUT_FORMAT>>`**. Single-file (HTML/CSS/JS vanilla, sem build, sem deps). Tema dark do vendor (em modo `html`, **reusa a mesma paleta** dos demais arquivos para coerência visual). Requisitos:
 - **Quantidade = nº oficial de questões do exame** (validar via MCP). Se a fonte não publicar, fallback **50**. **Nunca menos, nunca mais que +20%.** Distribuir proporcionalmente aos pesos dos domínios.
 - Cada questão: enunciado + (opcional) bloco de código + 4 alternativas. Mistura single/multi (badge para multi).
+- **Gabarito balanceado A/B/C/D** (mesma regra do `diagnostic`; em multi, contar cada índice correto). Não delegar ao checkbox "embaralhar" do runtime.
 - Botões por questão: **"💡 Revelar resposta"** (verde correta, vermelho erradas selecionadas, explicação por alternativa) e **"📖 Explicar geral"** (heurística + link doc oficial).
 - **🆕 Botão "📝 Adicionar ao mistake-log"** — copia texto pré-formatado para clipboard, pronto para colar em `mistake-log.<EXT>` (em modo `html`, o texto colado deve ser HTML válido para o `<tbody>` da tabela; em `md`, linha de tabela markdown).
 - Filtro por domínio · checkbox embaralhar · timer MM:SS · score final c/ breakdown por domínio + pass/fail (≥70%) · `localStorage` · botões Iniciar/Reiniciar/Finalizar/Revelar todas/Limpar.
@@ -306,6 +308,7 @@ Crie sob `<<EXAM_CODE>>/` (minúsculas), no idioma `<<PREFERRED_LANGUAGE>>`. Ext
 5. **Profundidade adaptada ao diagnóstico**: fundo onde score < 40%, comprimido onde > 70%. **Não usar autoavaliação como única base.**
 6. Labs realmente executáveis localmente ou em sandbox gratuito do vendor. Modo guided **explica o porquê**, modo speedrun **testa retenção**.
 7. `simulado.html` abre com duplo-clique, sem servidor. Inclui botão **"Adicionar ao mistake-log"**. **Bugs proibidos:** as 5 armadilhas JS listadas na seção do `simulado.html` (a #1 — "índice 0 falsy" — é a mais comum; revise o código antes de entregar).
+7.1. **Gabarito balanceado A/B/C/D** em `diagnostic` e `simulado`: 20–30% por letra, máx 35%. Vetar entrega se exceder.
 8. `concept-map` renderiza corretamente em Mermaid (testar mentalmente a sintaxe; em html usa CDN, em md usa bloco ` ```mermaid `).
 9. `flashcards.csv` é importável em Anki sem ajustes manuais.
 10. **Se `<<OUTPUT_FORMAT>>=html`**: tema dark consistente, todos os arquivos `.html` abrem isoladamente com duplo-clique, navegação entre arquivos funciona, links externos abrem em nova aba, conteúdo equivalente ao do modo markdown (sem perda).

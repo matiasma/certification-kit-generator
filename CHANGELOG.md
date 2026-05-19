@@ -7,6 +7,13 @@ e este projeto segue [Versionamento Semântico](https://semver.org/spec/v2.0.0.h
 
 ---
 
+## [3.2.2] - 2026-05-19
+
+### Adicionado
+- **🆕 Regra de gabarito balanceado A/B/C/D** em `diagnostic` e `simulado`: 20–30% por letra, máx 35%. Item 7.1 em `## Critérios de qualidade`.
+
+---
+
 ## [3.2.1] - 2026-05-15
 
 ### Corrigido
