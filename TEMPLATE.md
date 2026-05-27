@@ -187,11 +187,25 @@ Crie sob `<<EXAM_CODE>>/` (minúsculas), no idioma `<<PREFERRED_LANGUAGE>>`. Ext
 **`diagnostic.<EXT>` 🆕** — 20-25 questões diagnósticas:
 - 5 questões de pré-requisitos (Git, YAML, HTTP, conceitos básicos do vendor)
 - ~3-5 questões por domínio do blueprint (cobertura ampla, não profunda)
-- Cada questão: enunciado + 4 alternativas + resposta correta + link oficial
+- Cada questão: enunciado + 4 alternativas + link oficial. **Cada questão é tagueada com seu domínio** (para breakdown por área).
+- **🚫 PROIBIDO marcar a alternativa correta inline** (sem `**negrito**`, sem `<strong>`, sem ✅/✔️/asterisco, sem cor diferente, sem comentário "(correta)" ao lado da opção). A correta NÃO pode ser distinguível visualmente das demais antes do usuário responder — caso contrário o diagnóstico perde validade calibratória.
 - **Gabarito balanceado A/B/C/D:** cada letra 20–30% das corretas, máx 35%. Auditar e re-permutar antes de entregar.
-- Tabela de auto-correção: `score 0-40% → modo aprofundado | 41-70% → cobertura padrão | 71-100% → comprimir`
-- Output esperado: `score_per_domain.txt` que o `study-plan.<EXT>` consome
+- Tabela de auto-correção (mesmas faixas em qualquer formato): `score 0-40% → modo aprofundado | 41-70% → cobertura padrão | 71-100% → comprimir`
+- Output esperado: `score_per_domain` (resultado por domínio) que o `study-plan.<EXT>` consome.
 - **Executar antes de qualquer outro estudo (Dia 0, ~30min)**
+
+**Como apresentar gabarito e pontuação (depende de `<<OUTPUT_FORMAT>>`):**
+
+- **`markdown`**: gabarito vai em **seção separada no FIM do arquivo** (`## Gabarito` + `## Como pontuar`), depois de todas as questões. Cada item: `Q1: B — [doc oficial](URL)` + 1 linha de justificativa. Auto-correção manual é aceitável neste formato (o usuário lê, soma acertos por domínio numa tabela impressa, calcula %). O texto "anote num papel / planilha" só faz sentido aqui.
+
+- **`html` (padrão)**: **OBRIGATORIAMENTE INTERATIVO** — mesma natureza do `simulado.html`, em versão enxuta. **NUNCA** instrua o usuário a "anotar num papel" ou "somar manualmente" no modo html; o navegador faz a conta. Requisitos mínimos:
+  - Cada questão renderizada como `<fieldset>` com 4 `<input type="radio" name="qN">` (ou `checkbox` se multi). Alternativas SEM destaque visual da correta.
+  - Cada questão carrega `data-domain="..."` e `data-correct="<índice>"` (índices NÃO redigíveis pelo usuário; ficam só no JS/dataset).
+  - Botões globais: **"✅ Corrigir diagnóstico"** (calcula score total + por domínio), **"🔄 Refazer"**, **"💡 Revelar todas as respostas"**.
+  - Botão por questão: **"💡 Revelar resposta"** (verde na correta, vermelho nas erradas selecionadas, mostra link oficial).
+  - Painel de resultado renderizado dinamicamente: tabela `Domínio | Acertos | Total | % | Recomendação` aplicando as faixas 0-40 / 41-70 / 71-100. Texto final "Use este resultado como input do `study-plan.<EXT>`" + botão **"📋 Copiar score_per_domain"** que coloca no clipboard um JSON/texto pronto para colar.
+  - Persistência em `localStorage` (chave `ckg-diagnostic`).
+  - **Aplicar as 5 armadilhas JS obrigatórias** listadas na seção do `simulado.html` (em especial: índice 0 falsy em `state.answers[qi] || default`).
 
 **`fundamentals.<EXT>` 🆕** — Primer de pré-requisitos:
 - Lista 10-15 conceitos absolutos pré-exame (Git, YAML, HTTP, JSON, conceitos básicos do vendor)
@@ -307,11 +321,12 @@ Crie sob `<<EXAM_CODE>>/` (minúsculas), no idioma `<<PREFERRED_LANGUAGE>>`. Ext
 4. Denso, prático, examinável. Sem fluff, sem repetição entre arquivos (referencie).
 5. **Profundidade adaptada ao diagnóstico**: fundo onde score < 40%, comprimido onde > 70%. **Não usar autoavaliação como única base.**
 6. Labs realmente executáveis localmente ou em sandbox gratuito do vendor. Modo guided **explica o porquê**, modo speedrun **testa retenção**.
-7. `simulado.html` abre com duplo-clique, sem servidor. Inclui botão **"Adicionar ao mistake-log"**. **Bugs proibidos:** as 5 armadilhas JS listadas na seção do `simulado.html` (a #1 — "índice 0 falsy" — é a mais comum; revise o código antes de entregar).
-7.1. **Gabarito balanceado A/B/C/D** em `diagnostic` e `simulado`: 20–30% por letra, máx 35%. Vetar entrega se exceder.
-8. `concept-map` renderiza corretamente em Mermaid (testar mentalmente a sintaxe; em html usa CDN, em md usa bloco ` ```mermaid `).
-9. `flashcards.csv` é importável em Anki sem ajustes manuais.
-10. **Se `<<OUTPUT_FORMAT>>=html`**: tema dark consistente, todos os arquivos `.html` abrem isoladamente com duplo-clique, navegação entre arquivos funciona, links externos abrem em nova aba, conteúdo equivalente ao do modo markdown (sem perda).
+7. `simulado.html` abre com duplo-clique, sem servidor. Inclui botão **"Adicionar ao mistake-log"**. **Bugs proibidos:** as 5 armadilhas JS listadas na seção do `simulado.html` (a #1 — "índice 0 falsy" — é a mais comum; revise o código antes de entregar). **As mesmas regras valem para `diagnostic.html`** (também é interativo em modo `html`).
+8. **`diagnostic.<EXT>` nunca expõe a correta visualmente** (sem negrito/✅/cor/comentário ao lado da opção). Em `html` deve ser **interativo** (auto-correção pelo navegador, jamais "anote no papel"); em `md` o gabarito vai em seção separada no fim.
+9. **Gabarito balanceado A/B/C/D** em `diagnostic` e `simulado`: 20–30% por letra, máx 35%. Vetar entrega se exceder.
+10. `concept-map` renderiza corretamente em Mermaid (testar mentalmente a sintaxe; em html usa CDN, em md usa bloco ` ```mermaid `).
+11. `flashcards.csv` é importável em Anki sem ajustes manuais.
+12. **Se `<<OUTPUT_FORMAT>>=html`**: tema dark consistente, todos os arquivos `.html` abrem isoladamente com duplo-clique, navegação entre arquivos funciona, links externos abrem em nova aba, conteúdo equivalente ao do modo markdown (sem perda).
 
 ## ✅ Checklist de Entregáveis Completos (use para validar)
 
